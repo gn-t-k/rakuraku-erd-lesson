@@ -1,0 +1,14 @@
+{
+  "name": "rakuraku-erd-lesson",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:gn-t-k/rakuraku-erd-lesson.git",
+  "author": "gn-t-k <gntk1995422@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "prisma": "^3.4.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  }
+}
