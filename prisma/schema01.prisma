@@ -9,3 +9,49 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL01")
 }
+
+model OrderHistory {
+  id Int @id @default(autoincrement())
+  client Client @relation(fields: [clientID], references: [id])
+  clientID Int
+  orderedAt DateTime @default(now())
+  order Order?
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+  orderHistory OrderHistory @relation(fields: [orderHistoryID], references: [id])
+  orderHistoryID Int
+  cuisine Cuisine @relation(fields: [cuisineID], references: [id])
+  cuisineID Int
+  amount Int
+}
+
+model Client {
+  id Int @id @default(autoincrement())
+  orderHistory OrderHistory?
+  name String
+  tel Int
+}
+
+model Cuisine {
+  id Int @id @default(autoincrement())
+  order Order?
+  name String
+  price Int
+  category Category @relation(fields: [categoryID], references: [id])
+  categoryID Int
+  newCuisine NewCuisine?
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+  name String
+  cuisine Cuisine?
+}
+
+model NewCuisine {
+  id Int @id @default(autoincrement())
+  cuisine Cuisine @relation(fields: [cuisineID], references: [id])
+  cuisineID Int
+}
