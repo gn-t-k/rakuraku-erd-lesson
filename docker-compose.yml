@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  db:
+    container_name: erd-lesson-db-container
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      TZ: 'Asia/Tokyo'
+    image: postgres:13.4
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db:/var/lib/postgresql/data
